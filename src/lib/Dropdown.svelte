@@ -20,7 +20,7 @@
 		const search_text = event.currentTarget.value;
 
 		// @ts-ignore
-		data_to_render = [...data.filter((value) => value.value.startsWith(search_text))];
+		data_to_render = [...data.filter((value) => value.value.startsWith(search_text.toLowerCase()))];
 	}
 
 	$: if (isItemShow) {

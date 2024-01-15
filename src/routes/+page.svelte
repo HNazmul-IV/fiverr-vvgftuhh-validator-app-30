@@ -3,15 +3,20 @@
 	import Dropdown from './../lib/Dropdown.svelte';
 	import { onMount } from 'svelte';
 
-  /**
-   * @type {{label:string,value:string}[]}
-   */
+	/**
+	 * @type {{label:string,value:string}[]}
+	 */
 	let country_list = [];
 
 	/**
 	 * @type {HTMLDivElement}
 	 */
 	let dropdownEl;
+
+	let showQrCodeScanner = true;
+
+	/** @type {import("html5-qrcode").Html5QrcodeResult | ''} */
+	let qrCodeResult = '';
 
 	onMount(() => {
 		fetch('https://restcountries.com/v3.1/all?fields=name,flag')
@@ -26,6 +31,15 @@
 	});
 </script>
 
+{#if showQrCodeScanner}
+	<QrCodeScanner
+		on:insert={(e) => {
+			qrCodeResult = e.detail;
+			showQrCodeScanner = false;
+		}}
+		on:close={() => (showQrCodeScanner = false)}
+	/>
+{/if}
 <div
 	class="relative min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
 >
@@ -37,14 +51,16 @@
 
 		<!-- Scan QR Code button container -->
 		<div class="relative mb-4">
+			{#if qrCodeResult}
+				<p>{qrCodeResult.decodedText}</p>
+			{/if}
 			<button
+				on:click={() => (showQrCodeScanner = true)}
 				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
 			>
-				Scan QR Code
+				{qrCodeResult ? 'Scan Again' : 'Scan Qr Code'}
 			</button>
 		</div>
-
-		<QrCodeScanner/>
 
 		<div class="max-w-2xl mx-auto mb-4">
 			<Dropdown data={country_list} />
