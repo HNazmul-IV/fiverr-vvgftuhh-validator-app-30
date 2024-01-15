@@ -13,7 +13,7 @@
 	 */
 	let dropdownEl;
 
-	let showQrCodeScanner = true;
+	let showQrCodeScanner = false;
 
 	/** @type {import("html5-qrcode").Html5QrcodeResult | ''} */
 	let qrCodeResult = '';

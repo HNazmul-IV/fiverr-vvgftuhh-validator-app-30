@@ -43,9 +43,9 @@
 	});
 </script>
 
-<div class="fixed top-0 left-0 bg-black/50 z-50 grid place-items-center w-full h-screen">
+<div class="fixed top-0 left-0 bg-black/50 z-50 grid place-items-center w-full  h-full">
 	<div
-		class="w-full sm:w-[320px] bg-white h-screen sm:h-[600px] flex flex-col justify-between shadow-2xl rounded-lg p-1"
+		class="w-full  max-w-[360px] bg-white h-[calc(100vh_-_100px)] sm:h-[600px] flex flex-col justify-between shadow-2xl rounded-lg p-1"
 		id=""
 	>
 		<div class=" rounded-lg overflow-hidden" id="qrcode-renderer"></div>
