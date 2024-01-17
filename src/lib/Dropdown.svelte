@@ -41,12 +41,12 @@
 		/>
 	{:else if selected !== undefined}
 		<button
-			class="text-left px-4 border w-full py-2 rounded-md"
+			class="text-left px-4 border w-full py-2 rounded-md text-[1em]"
 			on:click={() => (isItemShow = true)}>{selected.label}</button
 		>
 	{:else}
 		<button
-			class="text-left px-4 border w-full py-2 rounded-md"
+			class="text-left px-4 border w-full py-2 rounded-md text-[1em]"
 			on:click={() => (isItemShow = true)}>Select Country</button
 		>
 	{/if}
@@ -65,7 +65,7 @@
 								selected = undefined;
 								isItemShow = false;
 							}}
-							class="px-4 py-2 border-b hover:bg-blue-400 cursor-pointer hover:text-white w-full text-left focus:bg-blue-400 focus:text-white"
+							class="px-4 py-2 border-b hover:bg-blue-400 cursor-pointer hover:text-white w-full text-left focus:bg-blue-400 focus:text-white text-[1em]"
 						>
 							Clear Selection
 						</button>
@@ -79,7 +79,7 @@
 								selected = d;
 								isItemShow = false;
 							}}
-							class="px-4 py-2 border-b hover:bg-blue-400 cursor-pointer hover:text-white w-full text-left focus:bg-blue-400 focus:text-white"
+							class="px-4 py-2 border-b hover:bg-blue-400 cursor-pointer hover:text-white w-full text-left focus:bg-blue-400 focus:text-white text-[1em]"
 						>
 							{@html d.label}
 						</button>
