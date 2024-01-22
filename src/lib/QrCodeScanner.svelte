@@ -45,18 +45,19 @@
 
 <div class="fixed top-0 left-0 bg-black/50 z-50 grid place-items-center w-full h-full">
 	<div
-		class="w-full max-w-[360px] bg-white h-[calc(100vh_-_100px)] sm:h-[600px] flex flex-col justify-between shadow-2xl rounded-lg p-1"
+		class="w-full max-w-[360px] bg-white h-[calc(100vh_-_100px)] sm:h-[650px] flex flex-col shadow-2xl rounded-lg p-1"
 		id=""
 	>
-		<div class=" rounded-lg overflow-hidden" id="qrcode-renderer"></div>
+		<div class=" rounded-lg overflow-hidden flex-shrink-0" id="qrcode-renderer"></div>
+		<div class="flex-1 overflow-y-auto py-3">
+			{#each result as r}
+				<p class="bg-green-200 p-2 rounded-md mb-2 text-xs w-11/12 mx-auto break-words">
+					{@html r.decodedText}
+				</p>
+			{/each}
+		</div>
 		<div class="">
 			{#if result.length}
-				{#each result as r}
-					<p class="bg-green-200 p-2 rounded-md mb-2 text-xs w-11/12 mx-auto">
-						{@html r.decodedText}
-					</p>
-				{/each}
-
 				<div class="flex flex-wrap gap-2">
 					<button
 						on:click={() => dispatch('insert', result)}

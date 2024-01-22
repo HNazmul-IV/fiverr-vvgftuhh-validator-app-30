@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	#qrcode-renderer__scan_region {
+		@apply [&>img]:inline-block text-center;
+	}
+	#qrcode-renderer__scan_region #qr-canvas-visible {
+		@apply !h-auto !w-[170px];
+	}
+	#qrcode-renderer__dashboard_section #html5-qrcode-button-file-selection {
+		@apply text-xs bg-blue-500 text-white rounded border p-2;
+	}
+}
